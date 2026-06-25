@@ -1,0 +1,47 @@
+{
+  "enableAllProjectMcpServers": true,
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git stash *)",
+      "Bash(git merge --no-ff *)",
+      "Bash(npm test)",
+      "Bash(npm test *)",
+      "Bash(npm run test)",
+      "Bash(npm run test *)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint *)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run build)",
+      "Bash(npm run build *)",
+      "Bash(npm audit)",
+      "Bash(npm audit *)",
+      "Bash(npx *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(pytest *)",
+      "Bash(pip-audit)",
+      "Bash(pip-audit *)",
+      "Bash(go test *)",
+      "Bash(govulncheck *)",
+      "Bash(bundler-audit)",
+      "Bash(bundler-audit *)"
+    ],
+    "deny": [
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -f *)",
+      "Bash(git rebase *)",
+      "Bash(rm -rf *)",
+      "Bash(drop table *)",
+      "Bash(sudo *)"
+    ]
+  }
+}
