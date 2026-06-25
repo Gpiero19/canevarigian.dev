@@ -23,6 +23,15 @@ except the last 20 to `AGENT_LOG_ARCHIVE.md` and adds an archive notice at the t
 
 <!-- Entries begin below this line -->
 
+## [2026-06-25 15:35] Task: Task 2 — Design tokens and layout shell
+**Agent**: orchestrator (direct implementation)
+**Action**: Implemented Task 2 directly in main context. Created type definitions (Profile, GitHubRepo, ProjectMeta, ChangelogEntry), profile.ts data file, Header/NavToggle/Footer components, updated globals.css with @theme inline block for Tailwind v4, updated layout.tsx with Geist font + metadata + JSON-LD + Analytics. Added unit tests (3) and E2E tests (4/8 runs). Fixed vitest include scope to exclude e2e directory. Added .mcp.json to .gitignore (contained GitHub PAT).
+**Why**: Establishes the design system and layout shell that all section tasks depend on. Reviewer note: review-agent read incorrect cached files; security-agent read actual files and returned SECURE.
+**Outcome**: pass
+**Files changed**: src/types/profile.ts, src/types/github.ts, src/types/project-meta.ts, src/types/changelog.ts, src/data/profile.ts, src/app/globals.css, src/app/layout.tsx, src/components/layout/Header.tsx, src/components/layout/NavToggle.tsx, src/components/layout/Footer.tsx, tests/unit/header.test.tsx, tests/e2e/layout.spec.ts, vitest.config.ts, .gitignore, ARCHITECTURE.md, AGENT_LOG.md, .claude/CLAUDE.md, .claude/agents/task-agent.md
+**Notes**: All gates passed: typecheck ✓, lint ✓, unit tests 3/3 ✓, E2E 8/8 ✓, build ✓, security SECURE. Draft PR could not be opened — no git remote configured. Branch: task/design-tokens-layout-shell. Human checkpoint required per SPEC.md before Task 3 (visual design review). One low-severity security note: email in JSON-LD schema is harvestable by bots (accepted trade-off per ADR-014).
+---
+
 ## [2026-06-25 10:00] Task: Task 1 — Project setup
 **Agent**: orchestrator (direct implementation)
 **Action**: Implemented all Task 1 files directly in the main conversation using Write/Bash tools. Created 19 files: package.json, next.config.ts, tsconfig.json, postcss.config.mjs, eslint.config.mjs, .prettierrc, vitest.config.ts, playwright.config.ts, .npmrc, components.json, .env.example, .gitignore, .github/workflows/ci.yml, src/app/layout.tsx, src/app/page.tsx, src/app/globals.css, src/lib/config.ts, src/lib/utils.ts, tests/setup.ts. Ran pnpm install, verified lint/typecheck/test/build all pass.
