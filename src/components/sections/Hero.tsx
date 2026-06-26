@@ -27,8 +27,9 @@ export default function Hero() {
             Email
           </a>
           <a
-            href={profile.resumePath}
-            download
+            href={process.env.NEXT_PUBLIC_RESUME_URL ?? profile.resumePath}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
           >
             Download Resume

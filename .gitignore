@@ -44,6 +44,9 @@ test-results/
 # vercel
 .vercel
 
+# resume — hosted on Vercel Blob, never commit the file
+/public/resume.pdf
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
