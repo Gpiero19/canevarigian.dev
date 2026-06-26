@@ -23,6 +23,24 @@ except the last 20 to `AGENT_LOG_ARCHIVE.md` and adds an archive notice at the t
 
 <!-- Entries begin below this line -->
 
+## [2026-06-26 11:43] Task: Task 4 — GitHub projects integration
+**Agent**: orchestrator (direct implementation)
+**Action**: Built GitHub projects integration. Created fetchFeaturedRepos wrapped in unstable_cache (1h ISR, ['github'] tag) with structured error logging and fallback to fallback-projects.ts on API failure. Extended ProjectMeta type with title, liveUrl, imageUrl, longDescription. Redesigned ProjectCard to full-width alternating layout (image + content side by side, alternating per project). Added case study via native <details>/<summary>. Downloaded and compressed project screenshots (all under 200kb). Populated project-meta.ts with rich content for 3 projects. Added unit tests (3) and E2E tests (2). Fixed LinkedIn URL in profile.ts and hero unit test.
+**Why**: Core feature — live GitHub project data with ISR. Human requested redesign from 3-col grid to 1-at-a-time alternating layout with screenshots, live demo links, and inline case studies.
+**Outcome**: pass
+**Files changed**: src/lib/github.ts, src/data/featured-repos.ts, src/data/project-meta.ts, src/data/fallback-projects.ts, src/types/project-meta.ts, src/components/sections/Projects.tsx, src/components/ui/ProjectCard.tsx, src/app/page.tsx, public/assets/showfreak.jpg, public/assets/frello.png, public/assets/music-player.png, tests/unit/github.test.ts, tests/e2e/projects.spec.ts, src/data/profile.ts, tests/unit/hero.test.tsx
+**Notes**: Build: 108kb first load JS (under 150kb limit). ISR revalidation 1h confirmed in build output. GitHub API returns 401 locally (no token) — falls back to static data correctly. showfreak.png was 1.2MB, compressed to JPEG 78kb. Draft PR open on task/github-projects. LinkedIn URL corrected to https://www.linkedin.com/in/canevarigian/.
+---
+
+## [2026-06-26 09:00] Task: Task 3 — Hero and About sections
+**Agent**: orchestrator (direct implementation)
+**Action**: Implemented Hero section (name h1, role, tagline, three CTA links: LinkedIn external, Email mailto, Resume download) and About section (bio paragraph, tech stack pill badges). Updated page.tsx to compose both sections replacing "coming soon" placeholder. Created public/resume.pdf placeholder. Added 3 unit tests and 2 E2E tests.
+**Why**: First sections recruiters see — required before GitHub projects section. Human approved Task 2 visual design checkpoint before this task began.
+**Outcome**: pass
+**Files changed**: src/components/sections/Hero.tsx, src/components/sections/About.tsx, src/app/page.tsx, public/resume.pdf, tests/unit/hero.test.tsx, tests/e2e/hero.spec.ts
+**Notes**: Build: 102kb first load JS (under 150kb limit). All 6 unit tests pass (3 Hero + 3 Header). Tech stack rendered as text pill badges — no icon library added (shadcn/ui only constraint). Both PRs (Task 2 + Task 3) merged to main by human. Human checkpoint per SPEC.md satisfied before Task 4.
+---
+
 ## [2026-06-25 15:35] Task: Task 2 — Design tokens and layout shell
 **Agent**: orchestrator (direct implementation)
 **Action**: Implemented Task 2 directly in main context. Created type definitions (Profile, GitHubRepo, ProjectMeta, ChangelogEntry), profile.ts data file, Header/NavToggle/Footer components, updated globals.css with @theme inline block for Tailwind v4, updated layout.tsx with Geist font + metadata + JSON-LD + Analytics. Added unit tests (3) and E2E tests (4/8 runs). Fixed vitest include scope to exclude e2e directory. Added .mcp.json to .gitignore (contained GitHub PAT).
