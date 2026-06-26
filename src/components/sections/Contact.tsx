@@ -6,8 +6,11 @@ export default function Contact() {
     <section id="contact" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-4 text-3xl font-bold tracking-tight">Get in touch</h2>
-        <p className="mb-10 text-lg text-muted-foreground">
-          I&apos;m open to full-stack and frontend roles — remote or on-site. If my work looks like a fit for your team, reach out on LinkedIn or by email.
+        <p className="mb-3 text-lg text-muted-foreground">
+          Available now for full-stack and frontend roles — remote or on-site in Copenhagen.
+        </p>
+        <p className="mb-10 text-sm text-muted-foreground">
+          EU citizen with Danish residence permit. No sponsorship required.
         </p>
         <div className="flex flex-wrap gap-3">
           <a
