@@ -25,4 +25,12 @@ export const fallbackProjects: GitHubRepo[] = [
     stars: 0,
     url: 'https://github.com/Gpiero19/Music-player',
   },
+  {
+    name: 'personal-website',
+    description:
+      'This portfolio — built with Next.js 15 App Router, React Server Components, Tailwind CSS v4, and Vitest. GitHub API integration, ISR, CI/CD, and E2E tests.',
+    language: 'TypeScript',
+    stars: 0,
+    url: 'https://github.com/Gpiero19/personal-website',
+  },
 ];
