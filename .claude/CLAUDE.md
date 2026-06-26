@@ -157,11 +157,15 @@ This keeps the active log readable without losing history.
 
 ## Audit log rule
 
-After **every** subagent completes (pass, fail, retry, blocked, or approved), append to `AGENT_LOG.md` using exactly this format:
+⚠️ **CRITICAL — NON-NEGOTIABLE**: Logging to `AGENT_LOG.md` is mandatory after every action. Missing entries are a project failure, not a minor oversight. This applies even when the orchestrator implements directly without subagents.
+
+After **every** action (pass, fail, retry, blocked, approved, or direct implementation by the orchestrator), append to `AGENT_LOG.md` **before** moving to the next step. The log entry must be written and committed as part of the same task commit — never deferred.
+
+Use exactly this format:
 
 ```
 ## [YYYY-MM-DD HH:MM] Task: <task name>
-**Agent**: architect-agent | task-agent | test-agent | review-agent | security-agent
+**Agent**: architect-agent | task-agent | test-agent | review-agent | security-agent | orchestrator
 **Action**: <what the agent did>
 **Why**: <the reasoning behind the action>
 **Outcome**: pass | fail | retry | blocked | approved | vulnerabilities-found | secure
@@ -170,4 +174,8 @@ After **every** subagent completes (pass, fail, retry, blocked, or approved), ap
 ---
 ```
 
-Never skip a log entry. Every action by every agent must be recorded.
+**Checklist before every `git commit`:**
+- [ ] AGENT_LOG.md entry written for this task
+- [ ] Entry included in the staged files for this commit
+
+Never skip a log entry. Every action by every agent must be recorded. If an entry was missed, write it immediately as a backfill commit before starting the next task.
