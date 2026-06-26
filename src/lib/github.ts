@@ -1,10 +1,10 @@
-import { unstable_cache } from 'next/cache';
 import type { GitHubRepo } from '@/types/github';
 import { fallbackProjects } from '@/data/fallback-projects';
 import { projectMeta } from '@/data/project-meta';
 import { config } from '@/lib/config';
 
-async function _fetchFeaturedRepos(
+// ponytail: page-level revalidate=3600 in page.tsx handles ISR; unstable_cache dropped due to Next.js 15.5 validateTags regression
+export async function fetchFeaturedRepos(
   username: string,
   featuredNames: string[],
 ): Promise<GitHubRepo[]> {
@@ -56,8 +56,3 @@ async function _fetchFeaturedRepos(
     });
 }
 
-export const fetchFeaturedRepos = unstable_cache(
-  _fetchFeaturedRepos,
-  ['github-repos'],
-  { revalidate: 3600, tags: ['github'] },
-);

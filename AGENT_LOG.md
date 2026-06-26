@@ -23,6 +23,15 @@ except the last 20 to `AGENT_LOG_ARCHIVE.md` and adds an archive notice at the t
 
 <!-- Entries begin below this line -->
 
+## [2026-06-26 11:52] Task: Task 5 — Contact section and SEO
+**Agent**: orchestrator (direct implementation)
+**Action**: Implemented Contact section (LinkedIn, Email, GitHub links with lucide-react icons), sitemap.ts (Next.js built-in sitemap for /sitemap.xml), og-image.png placeholder. Added page-level `export const revalidate = 3600` to page.tsx as ISR mechanism, replacing unstable_cache which caused a Next.js 15.5.19 build failure (validateTags regression). Added 5 metadata unit tests and 3 contact E2E tests.
+**Why**: Final task — completes the single-page portfolio with contact links and full SEO. OG metadata was already implemented in Task 2 layout.tsx. unstable_cache dropped in favour of page-level revalidate (simpler, same ISR behaviour, avoids Next.js 15.5 regression — deviation from ADR-015).
+**Outcome**: pass
+**Files changed**: src/components/sections/Contact.tsx, src/app/sitemap.ts, src/app/page.tsx, src/lib/github.ts, public/og-image.png, tests/unit/metadata.test.ts, tests/e2e/contact.spec.ts, AGENT_LOG.md
+**Notes**: Build: 108kb first load JS, /sitemap.xml route confirmed, ISR 1h confirmed. 14/14 unit tests pass. ADR-015 deviation: unstable_cache removed — page-level revalidate=3600 is equivalent for this use case. Tag-based on-demand revalidation can be added later if needed.
+---
+
 ## [2026-06-26 11:43] Task: Task 4 — GitHub projects integration
 **Agent**: orchestrator (direct implementation)
 **Action**: Built GitHub projects integration. Created fetchFeaturedRepos wrapped in unstable_cache (1h ISR, ['github'] tag) with structured error logging and fallback to fallback-projects.ts on API failure. Extended ProjectMeta type with title, liveUrl, imageUrl, longDescription. Redesigned ProjectCard to full-width alternating layout (image + content side by side, alternating per project). Added case study via native <details>/<summary>. Downloaded and compressed project screenshots (all under 200kb). Populated project-meta.ts with rich content for 3 projects. Added unit tests (3) and E2E tests (2). Fixed LinkedIn URL in profile.ts and hero unit test.
