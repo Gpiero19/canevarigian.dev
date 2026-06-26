@@ -7,7 +7,7 @@ export const profile: Profile = {
   bio: "I'm a junior software developer with a passion for building elegant, user-focused applications. I work primarily with TypeScript and the modern web stack, and I'm actively seeking my first professional role where I can grow and make a real contribution.",
   email: 'canevarigian@gmail.com',
   githubUsername: 'Gpiero19',
-  linkedinUrl: 'https://linkedin.com/in/giancanevari',
+  linkedinUrl: 'https://www.linkedin.com/in/canevarigian/',
   resumePath: '/resume.pdf',
   siteUrl: 'https://giancanevari.dev',
   metaDescription:

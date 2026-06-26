@@ -6,7 +6,7 @@ describe('Hero', () => {
   it('renders the LinkedIn button with correct href', () => {
     render(<Hero />);
     const link = screen.getByRole('link', { name: 'LinkedIn' });
-    expect(link).toHaveAttribute('href', 'https://linkedin.com/in/giancanevari');
+    expect(link).toHaveAttribute('href', 'https://www.linkedin.com/in/canevarigian/');
   });
 
   it('renders the email button as a mailto link', () => {
