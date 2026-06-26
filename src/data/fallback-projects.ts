@@ -4,7 +4,7 @@ export const fallbackProjects: GitHubRepo[] = [
   {
     name: 'ShowFreak',
     description:
-      'Track movies and TV shows, build a personal library, and get genre-weighted recommendations — powered by TMDB. Full-stack React + Node.js + PostgreSQL app with JWT auth.',
+      'A full-stack movie & TV tracker with personalized recommendations, a personal library, and JWT auth — powered by the TMDB API.',
     language: 'TypeScript',
     stars: 0,
     url: 'https://github.com/Gpiero19/ShowFreak',
@@ -12,30 +12,17 @@ export const fallbackProjects: GitHubRepo[] = [
   {
     name: 'Trello-project',
     description:
-      'Full-stack kanban board app inspired by Trello. Built with React 19, Node.js, Express, PostgreSQL and drag-and-drop. Features auth, guest mode, labels, comments, due dates, priorities and templates.',
+      'A full-stack Trello-inspired kanban app with JWT auth, drag-and-drop, board templates, and a guest mode — deployed on Vercel + Render.',
     language: 'JavaScript',
     stars: 0,
     url: 'https://github.com/Gpiero19/Trello-project',
   },
   {
     name: 'Music-player',
-    description: null,
+    description:
+      'A browser-based drum pad with keyboard input, BPM metronome, and session recording — built with React 19 and TypeScript.',
     language: 'TypeScript',
     stars: 0,
     url: 'https://github.com/Gpiero19/Music-player',
-  },
-  {
-    name: 'Collabville',
-    description: null,
-    language: 'TypeScript',
-    stars: 0,
-    url: 'https://github.com/Gpiero19/Collabville',
-  },
-  {
-    name: 'Opsflow',
-    description: null,
-    language: 'TypeScript',
-    stars: 0,
-    url: 'https://github.com/Gpiero19/Opsflow',
   },
 ];
