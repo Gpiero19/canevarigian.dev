@@ -3,8 +3,8 @@ import NavToggle from './NavToggle';
 import { profile } from '@/data/profile';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
+  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -24,11 +24,19 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="cursor-pointer text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
+          <a
+            href={process.env.NEXT_PUBLIC_RESUME_URL ?? '/resume.pdf'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer rounded-md border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
+          >
+            Resume
+          </a>
         </nav>
 
         <NavToggle links={navLinks} />

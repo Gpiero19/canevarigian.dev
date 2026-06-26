@@ -3,7 +3,8 @@ import type { Profile } from '@/types/profile';
 export const profile: Profile = {
   name: 'Gian Canevari',
   title: 'Full Stack Developer',
-  tagline: 'Industrial engineer turned full stack developer, based in Copenhagen. TypeScript · React · Node.js · Python · PostgreSQL.',
+  tagline:
+    'I build full-stack web applications end-to-end — from database schema to deployed UI. My work ships with tests, handles edge cases, and stays fast.',
   bio: "I'm an industrial engineer from Chile who transitioned into software development through a Python developer bootcamp in Berlin. Since then I've built three production-deployed full-stack applications covering REST APIs, relational databases, and React frontends — and I design AI-assisted automation workflows using Make.com and AI coding agents as part of my daily engineering practice.\n\nAcross my projects I've shipped JWT refresh token rotation, a genre-weighted recommendation engine, multi-level drag-and-drop with a 15-route REST API, and a Web Audio API look-ahead scheduler — backed by 106 automated tests in ShowFreak. My engineering background gives me a structured approach to problem decomposition before I write a line of code.\n\nI work in TypeScript across the full stack (React · Node.js · Express · PostgreSQL) and also in Python with Django REST Framework. I speak English (C1), Spanish (native), Italian, and conversational Danish. Open to full-stack and frontend roles — remote or on-site in Copenhagen.",
   email: 'canevarigian@gmail.com',
   githubUsername: 'Gpiero19',

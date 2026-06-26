@@ -9,15 +9,15 @@ describe('Hero', () => {
     expect(link).toHaveAttribute('href', 'https://www.linkedin.com/in/canevarigian/');
   });
 
-  it('renders the email button as a mailto link', () => {
+  it('renders the View Projects link pointing to #projects', () => {
     render(<Hero />);
-    const link = screen.getByRole('link', { name: 'Email' });
-    expect(link).toHaveAttribute('href', 'mailto:canevarigian@gmail.com');
+    const link = screen.getByRole('link', { name: 'View Projects' });
+    expect(link).toHaveAttribute('href', '#projects');
   });
 
-  it('renders the resume link opening in a new tab', () => {
+  it('renders the Resume link opening in a new tab', () => {
     render(<Hero />);
-    const link = screen.getByRole('link', { name: 'Download Resume' });
+    const link = screen.getByRole('link', { name: 'Resume' });
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });

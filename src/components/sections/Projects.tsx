@@ -10,7 +10,10 @@ export default async function Projects() {
   return (
     <section id="projects" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
-        <h2 className="mb-16 text-3xl font-bold tracking-tight">Projects</h2>
+        <div className="mb-16">
+          <h2 className="mb-2 text-3xl font-bold tracking-tight">Projects</h2>
+          <p className="text-sm text-muted-foreground">Production-deployed. Click any project to see the case study.</p>
+        </div>
         {repos.length === 0 ? (
           <p className="text-muted-foreground">No projects to display.</p>
         ) : (
