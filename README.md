@@ -1,50 +1,77 @@
 # giancanevari.dev
 
-Personal portfolio for Gian Canevari — Full Stack Developer based in Copenhagen.
+[![CI](https://github.com/Gpiero19/personal-website/actions/workflows/ci.yml/badge.svg)](https://github.com/Gpiero19/personal-website/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel&logoColor=white)
+
+Personal portfolio for **Gian Canevari** — Full Stack Developer based in Copenhagen.
 
 **Live:** [giancanevari.dev](https://giancanevari.dev)
 
+![giancanevari.dev preview](public/assets/portfolio.jpg)
+
 ---
 
-## Stack
+## What This Project Demonstrates
+
+This portfolio is itself a production-grade Next.js application — not a static site or a template. It was built to the same standard I apply to client work.
+
+| Area | Implementation |
+|---|---|
+| **Modern React** | React Server Components throughout — zero client-side data fetching for content |
+| **Resilient data fetching** | GitHub API with structured error handling and automatic fallback to static data |
+| **ISR** | Page-level `revalidate = 3600` — content updates hourly without a redeploy |
+| **Testing** | 14 unit tests (Vitest + Testing Library) + Playwright E2E suite |
+| **CI/CD** | GitHub Actions runs typecheck, lint, and unit tests on every push |
+| **SEO** | JSON-LD structured data, auto-generated `/sitemap.xml`, Open Graph + Twitter cards |
+| **Accessibility** | Semantic HTML, ARIA labels, keyboard navigation, `prefers-reduced-motion` |
+| **Performance** | 108kb first-load JS, no animation library, CSS-only entrance animations |
+| **Security** | Resume hosted on Vercel Blob — never committed to the repository |
+
+---
+
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
 | Framework | Next.js 15 (App Router) |
 | Rendering | React Server Components + ISR |
 | Language | TypeScript (strict) |
-| Styling | Tailwind CSS v4 + shadcn/ui (zinc dark) |
-| Font | Geist Sans (`geist` npm package) |
-| Testing | Vitest + Testing Library (unit) · Playwright (E2E) |
+| Styling | Tailwind CSS v4 + shadcn/ui (zinc dark theme) |
+| Font | Geist Sans via `geist` npm package |
+| Testing | Vitest + Testing Library · Playwright |
 | CI/CD | GitHub Actions |
 | Hosting | Vercel |
-| Analytics | Vercel Analytics (cookieless, no consent required) |
+| File storage | Vercel Blob (resume PDF) |
+| Analytics | Vercel Analytics (cookieless, no consent banner required) |
 
 ---
 
 ## Architecture
 
-The site is built entirely with React Server Components. There are no client components except the mobile navigation toggle.
+Built RSC-first: every component is a server component except the mobile navigation toggle. This eliminates client-side data fetching, removes loading state complexity, and reduces hydration overhead.
 
-**Project data flow:**
+**Data flow for the projects section:**
 
 ```
-GitHub API
-    └── fetchFeaturedRepos() [server-side, RSC]
-            ├── success → live repo data + projectMeta overlay
-            └── error   → fallback-projects.ts (static, always works)
+GitHub REST API
+    └── fetchFeaturedRepos() ← runs server-side at request time
+            ├── success → live repo metadata + local projectMeta overlay
+            └── error   → fallback-projects.ts (static, always available)
 ```
 
-The page uses `export const revalidate = 3600` for ISR — content rebuilds at most once per hour without a manual redeploy. If the GitHub API is unavailable, `fallback-projects.ts` returns static data so the projects section never shows empty.
+The `projectMeta` overlay pattern keeps live GitHub data (stars, language, URL) separate from editorial content (case study, screenshots, live demo link). Updating copy never requires touching the API layer.
 
-The resume PDF lives on Vercel Blob and is referenced via `NEXT_PUBLIC_RESUME_URL` — it is never committed to the repository.
+**Key decisions:**
 
-**Key architectural decisions:**
+**RSC over client fetching** — GitHub data is fetched server-side and streamed as rendered HTML. No `useEffect`, no loading skeletons, no client bundle cost for data access.
 
-- **RSC-first** — no client-side data fetching, no hydration overhead for content, no loading spinners
-- **Page-level ISR over `unstable_cache`** — Next.js 15.5 has a regression with `unstable_cache` tag validation; page-level revalidation achieves the same 1-hour TTL without the bug
-- **No animation library** — entrance animations use a CSS `@keyframes fade-up` registered as a Tailwind token (`--animate-fade-up`), keeping the JS bundle minimal
-- **`<details>/<summary>` for case studies** — native HTML expand/collapse, no JS, fully accessible and keyboard navigable
+**Page-level ISR over `unstable_cache`** — Next.js 15.5.x has a regression where `unstable_cache` with a `tags` option throws `validateTags is not a function` at build time. Page-level `revalidate` achieves the same 1-hour TTL without the bug and without wrapping every fetch.
+
+**CSS-only animations** — entrance animations use `@keyframes fade-up` registered as a Tailwind v4 `--animate-*` token. No Framer Motion, no GSAP. The animation system adds zero bytes to the JS bundle and respects `prefers-reduced-motion` via a single CSS media query.
+
+**Native `<details>/<summary>` for case studies** — expand/collapse without a single line of JavaScript. Keyboard accessible by default, no focus trap to manage, no state to sync.
 
 ---
 
@@ -53,46 +80,46 @@ The resume PDF lives on Vercel Blob and is referenced via `NEXT_PUBLIC_RESUME_UR
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout: Geist font, metadata, JSON-LD, Analytics
-│   ├── page.tsx            # Section composition + revalidate export
-│   ├── sitemap.ts          # Auto-generated /sitemap.xml
-│   └── globals.css         # Tailwind v4 @theme block, @keyframes, base styles
+│   ├── layout.tsx           # Root layout: font, metadata, JSON-LD, Analytics
+│   ├── page.tsx             # Section composition + revalidate export
+│   ├── sitemap.ts           # Generates /sitemap.xml at build time
+│   └── globals.css          # Tailwind v4 @theme block, @keyframes, base styles
 ├── components/
 │   ├── layout/
-│   │   ├── Header.tsx      # Sticky nav with Resume CTA
-│   │   ├── Footer.tsx      # Social links
-│   │   └── NavToggle.tsx   # Mobile hamburger (only client component)
+│   │   ├── Header.tsx       # Sticky nav + Resume CTA button
+│   │   ├── Footer.tsx       # Social icon links
+│   │   └── NavToggle.tsx    # Mobile hamburger (only client component in the repo)
 │   ├── sections/
-│   │   ├── Hero.tsx        # Role label, name, tagline, CTAs
-│   │   ├── Projects.tsx    # RSC: fetches GitHub API, renders project cards
-│   │   ├── Experience.tsx  # Work history and education timeline
-│   │   ├── About.tsx       # Bio paragraphs + categorised skill grid
-│   │   └── Contact.tsx     # LinkedIn, Email, GitHub links
+│   │   ├── Hero.tsx         # Role label, name, value prop, CTAs
+│   │   ├── Projects.tsx     # RSC: fetches GitHub API, maps to ProjectCard
+│   │   ├── Experience.tsx   # Work history + education timeline
+│   │   ├── About.tsx        # Bio + categorised skill grid
+│   │   └── Contact.tsx      # Contact links + work authorization info
 │   └── ui/
-│       └── ProjectCard.tsx # Alternating layout, image hover, case study expand
+│       └── ProjectCard.tsx  # Alternating image/content layout, hover, case study
 ├── data/
-│   ├── profile.ts          # All personal content: bio, skills, meta description
-│   ├── featured-repos.ts   # Ordered list of GitHub repo names to display
-│   ├── project-meta.ts     # Rich content overlay: titles, case studies, images, URLs
+│   ├── profile.ts           # Bio, skills, tagline, contact info, meta description
+│   ├── featured-repos.ts    # Ordered list of GitHub repo names to display
+│   ├── project-meta.ts      # Editorial overlay: titles, case studies, images, URLs
 │   ├── fallback-projects.ts # Static fallback when GitHub API is unavailable
-│   └── experience.ts       # Work history and education entries
+│   └── experience.ts        # Work history and education entries
 ├── lib/
-│   ├── github.ts           # fetchFeaturedRepos: API call + error handling + fallback
-│   └── config.ts           # Environment-derived config (siteUrl, githubToken)
-└── types/                  # TypeScript interfaces: Profile, GitHubRepo, ProjectMeta…
+│   ├── github.ts            # fetchFeaturedRepos: fetch → overlay → fallback
+│   └── config.ts            # Environment-derived config (siteUrl, githubToken)
+└── types/                   # TypeScript interfaces: Profile, GitHubRepo, ProjectMeta…
 
 tests/
-├── unit/                   # Vitest + Testing Library — 14 tests
-└── e2e/                    # Playwright — contact, hero, projects, layout
+├── unit/                    # Vitest + Testing Library (14 tests)
+└── e2e/                     # Playwright: hero, projects, contact, layout
 
 public/
-├── assets/                 # Project screenshots (kept under 200kb)
-└── og-image.png            # Open Graph image
+├── assets/                  # Project screenshots (all under 200kb)
+└── og-image.png             # Open Graph image
 ```
 
 ---
 
-## Local Development
+## Local Setup
 
 **Prerequisites:** Node.js 20+, pnpm
 
@@ -100,45 +127,49 @@ public/
 git clone https://github.com/Gpiero19/personal-website.git
 cd personal-website
 pnpm install
-cp .env.example .env.local
-pnpm dev
+cp .env.example .env.local   # GITHUB_TOKEN is optional but recommended
+pnpm dev                     # http://localhost:3000
 ```
-
-Open [http://localhost:3000](http://localhost:3000).
 
 **Environment variables:**
 
-| Variable | Required | Description |
+| Variable | Required | Purpose |
 |---|---|---|
-| `GITHUB_TOKEN` | No | Raises GitHub API rate limit from 60 to 5,000 req/hr |
-| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical URL used in sitemap and OG tags |
-| `NEXT_PUBLIC_RESUME_URL` | Yes (prod) | Vercel Blob public URL for the resume PDF |
+| `GITHUB_TOKEN` | No | Raises rate limit from 60 to 5,000 req/hr — without it, the API still works |
+| `NEXT_PUBLIC_SITE_URL` | Production | Canonical URL for sitemap and OG tags |
+| `NEXT_PUBLIC_RESUME_URL` | Production | Vercel Blob public URL for the resume PDF |
 
 ---
 
-## Testing
+## Testing & Quality
 
 ```bash
-pnpm test          # Vitest unit tests (14 tests)
-pnpm test:e2e      # Playwright E2E — requires dev server on :3000
-pnpm typecheck     # TypeScript strict check
-pnpm lint          # ESLint
-pnpm build         # Production build — confirms no RSC/type errors
+pnpm test        # Vitest unit tests
+pnpm test:e2e    # Playwright E2E (requires dev server running)
+pnpm typecheck   # TypeScript strict mode
+pnpm lint        # ESLint
+pnpm build       # Production build — catches RSC/type errors
 ```
 
-GitHub Actions runs typecheck, lint, and unit tests on every push to any branch.
+CI runs on every push: typecheck → lint → unit tests. A failing build blocks the branch.
 
 ---
 
-## Content Updates
+## Updating Content
 
-All site content lives in `src/data/` — no component changes needed for most updates:
+All content is data-driven — no component changes required for copy updates:
 
-| What to change | File |
+| What to update | File |
 |---|---|
-| Bio, tagline, skills, contact info | `src/data/profile.ts` |
-| Which GitHub projects to show | `src/data/featured-repos.ts` |
+| Bio, tagline, skills, meta description | `src/data/profile.ts` |
+| Which GitHub projects appear | `src/data/featured-repos.ts` |
 | Project titles, descriptions, case studies | `src/data/project-meta.ts` |
 | Work history and education | `src/data/experience.ts` |
-| Project screenshots | `public/assets/` — keep files under 200kb |
-| Resume | Upload to Vercel Blob → update `NEXT_PUBLIC_RESUME_URL` in Vercel dashboard |
+| Project screenshots | `public/assets/` — keep each file under 200kb |
+| Resume PDF | Upload to Vercel Blob → set `NEXT_PUBLIC_RESUME_URL` in Vercel dashboard |
+
+---
+
+## Author
+
+**Gian Canevari** — [giancanevari.dev](https://giancanevari.dev) · [LinkedIn](https://www.linkedin.com/in/canevarigian/) · [GitHub](https://github.com/Gpiero19)
