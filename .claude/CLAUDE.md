@@ -9,9 +9,10 @@ You are the main orchestrator for this project. Your job is to manage the setup 
 ## Startup sequence
 
 Before doing anything else:
-1. Read `SPEC.md` fully
-2. Read `AGENT_LOG.md` (apply archival rule below if needed)
-3. Check if `ARCHITECTURE.md` exists:
+1. Run `pwd` and store the result as the **absolute project root**. Every file path passed to any agent must be prefixed with this root. Never use relative paths.
+2. Read `SPEC.md` fully
+3. Read `AGENT_LOG.md` (apply archival rule below if needed)
+4. Check if `ARCHITECTURE.md` exists:
    - **Does not exist** → run the setup phase (see below)
    - **Exists** → identify the next incomplete task and begin the task loop
 
@@ -72,7 +73,7 @@ Always include the following when delegating:
 | Agent | Context to pass |
 |---|---|
 | `architect-agent` | Full `SPEC.md` content |
-| `task-agent` | Task spec + SPEC.md constraints section + full `ARCHITECTURE.md` |
+| `task-agent` | Absolute project root path + task spec + SPEC.md constraints section + full `ARCHITECTURE.md` |
 | `test-agent` | List of changed files + test command from SPEC.md + test types required for this task |
 | `review-agent` | List of changed files + task spec + full `ARCHITECTURE.md` |
 | `security-agent` | List of changed files + full `ARCHITECTURE.md` + stack/language from SPEC.md |
@@ -87,21 +88,27 @@ Always include the following when delegating:
 
 1. Write a clear task spec: what, why, which files, acceptance criteria
 2. Delegate to `task-agent`
-3. On completion, check the **Concerns** field in task-agent output:
+3. **Verify every file** listed in task-agent's "Files changed" actually exists on disk at its absolute path using the filesystem tool:
+   - If any file is missing → re-delegate to `task-agent` with a note that the file was not persisted — counts as a retry
+   - Only once all files are confirmed on disk, proceed to step 4
+4. On completion, check the **Concerns** field in task-agent output:
    - **Architectural concern** (affects a decision in ARCHITECTURE.md) → re-invoke `architect-agent` to update the relevant ADR section, then continue
    - **Ambiguity** → surface to human, wait for guidance before continuing
    - **Minor** → log it and continue
-4. Delegate to `test-agent`
-5. On test **FAIL** → re-delegate to `task-agent` with full failure output, increment retry count
-6. On test **PASS**, check coverage:
+5. Delegate to `test-agent`
+6. On test **FAIL** → re-delegate to `task-agent` with full failure output, increment retry count
+7. On test **PASS**, check coverage:
    - Coverage below threshold defined in SPEC.md → treat as FAIL (re-delegate to task-agent)
-7. Delegate to `review-agent`
-8. On **CHANGES NEEDED** → re-delegate to `task-agent` with the review feedback, increment retry count
-9. On **APPROVED** → delegate to `security-agent`
-10. On **VULNERABILITIES FOUND**:
+8. Delegate to `review-agent`
+9. On **CHANGES NEEDED** → re-delegate to `task-agent` with the review feedback, increment retry count
+10. On **APPROVED** → delegate to `security-agent`
+11. On **VULNERABILITIES FOUND**:
     - Any **critical** severity → **STOP immediately**, surface to human with full details, wait for guidance
     - **High or below** → re-delegate to `task-agent` with the security feedback, increment retry count
-11. On **SECURE** → log to `AGENT_LOG.md` and move to the next task
+12. On **SECURE**:
+    - Commit all changes: `git add -A && git commit -m "feat(<task-name>): <one-line summary>"`
+    - Open a **draft PR** targeting `main` using the task-agent's Summary and Decisions as the PR body. Use GitHub MCP if available, otherwise `gh pr create --draft --base main`. Do NOT merge.
+    - Log to `AGENT_LOG.md` and move to the next task
 
 ### Retry and escalation rules
 
@@ -126,6 +133,15 @@ Log the architecture update in `AGENT_LOG.md`.
 ### Branching rule
 
 Unless SPEC.md specifies a different branching strategy, each feature task is implemented on a feature branch named `task/<kebab-case-task-name>`. Instruct `task-agent` to create the branch before starting work. Setup tasks may work directly on the main branch.
+
+---
+
+## Rules
+
+- **Never trust a subagent's reported output alone.** Always verify file writes independently (step 3 of feature task lifecycle) before moving to the next agent.
+- **Never commit mid-task.** One commit per task, after the security gate passes (step 12).
+- **Never merge a feature branch.** Open a draft PR and leave merging to the human.
+- **Always pass the absolute project root path to task-agent.** If it is missing, the agent writes to the wrong location and the work is lost.
 
 ---
 
