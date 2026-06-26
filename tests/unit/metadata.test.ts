@@ -9,12 +9,12 @@ import { metadata } from '@/app/layout';
 
 describe('page metadata', () => {
   it('has correct title format', () => {
-    expect(metadata.title).toBe('Gian Canevari — Software Developer');
+    expect(metadata.title).toBe('Gian Canevari — Full Stack Developer');
   });
 
   it('has og:title', () => {
     expect((metadata.openGraph as { title?: string })?.title).toBe(
-      'Gian Canevari — Software Developer',
+      'Gian Canevari — Full Stack Developer',
     );
   });
 

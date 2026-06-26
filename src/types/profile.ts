@@ -3,6 +3,11 @@ export interface TechIcon {
   icon: string;
 }
 
+export interface SkillCategory {
+  label: string;
+  skills: string[];
+}
+
 export interface Profile {
   name: string;
   title: string;
@@ -15,4 +20,5 @@ export interface Profile {
   siteUrl: string;
   metaDescription: string;
   techStack: TechIcon[];
+  skillCategories: SkillCategory[];
 }

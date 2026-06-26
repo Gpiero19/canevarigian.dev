@@ -7,8 +7,7 @@ export default function Contact() {
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-4 text-3xl font-bold tracking-tight">Get in touch</h2>
         <p className="mb-10 text-lg text-muted-foreground">
-          I&apos;m actively looking for my first professional role as a Software Developer.
-          If you think I&apos;d be a good fit for your team, I&apos;d love to connect.
+          I&apos;m open to full-stack and frontend roles — remote or on-site. If my work looks like a fit for your team, reach out on LinkedIn or by email.
         </p>
         <div className="flex flex-wrap gap-3">
           <a

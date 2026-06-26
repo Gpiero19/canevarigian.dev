@@ -15,10 +15,10 @@ describe('Hero', () => {
     expect(link).toHaveAttribute('href', 'mailto:canevarigian@gmail.com');
   });
 
-  it('renders the resume download button with download attribute', () => {
+  it('renders the resume link opening in a new tab', () => {
     render(<Hero />);
     const link = screen.getByRole('link', { name: 'Download Resume' });
-    expect(link).toHaveAttribute('href', '/resume.pdf');
-    expect(link).toHaveAttribute('download');
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 });
