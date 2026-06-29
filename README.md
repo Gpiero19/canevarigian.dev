@@ -1,4 +1,4 @@
-# giancanevari.dev
+# canevarigian.dev
 
 [![CI](https://github.com/Gpiero19/personal-website/actions/workflows/ci.yml/badge.svg)](https://github.com/Gpiero19/personal-website/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
@@ -7,9 +7,9 @@
 
 Personal portfolio for **Gian Canevari** — Full Stack Developer based in Copenhagen.
 
-**Live:** [giancanevari.dev](https://giancanevari.dev)
+**Live:** [canevarigian.dev](https://canevarigian.dev)
 
-![giancanevari.dev preview](public/assets/portfolio.jpg)
+![canevarigian.dev preview](public/assets/portfolio.jpg)
 
 ---
 
@@ -111,65 +111,10 @@ src/
 tests/
 ├── unit/                    # Vitest + Testing Library (14 tests)
 └── e2e/                     # Playwright: hero, projects, contact, layout
-
-public/
-├── assets/                  # Project screenshots (all under 200kb)
-└── og-image.png             # Open Graph image
 ```
-
----
-
-## Local Setup
-
-**Prerequisites:** Node.js 20+, pnpm
-
-```bash
-git clone https://github.com/Gpiero19/personal-website.git
-cd personal-website
-pnpm install
-cp .env.example .env.local   # GITHUB_TOKEN is optional but recommended
-pnpm dev                     # http://localhost:3000
-```
-
-**Environment variables:**
-
-| Variable | Required | Purpose |
-|---|---|---|
-| `GITHUB_TOKEN` | No | Raises rate limit from 60 to 5,000 req/hr — without it, the API still works |
-| `NEXT_PUBLIC_SITE_URL` | Production | Canonical URL for sitemap and OG tags |
-| `NEXT_PUBLIC_RESUME_URL` | Production | Vercel Blob public URL for the resume PDF |
-
----
-
-## Testing & Quality
-
-```bash
-pnpm test        # Vitest unit tests
-pnpm test:e2e    # Playwright E2E (requires dev server running)
-pnpm typecheck   # TypeScript strict mode
-pnpm lint        # ESLint
-pnpm build       # Production build — catches RSC/type errors
-```
-
-CI runs on every push: typecheck → lint → unit tests. A failing build blocks the branch.
-
----
-
-## Updating Content
-
-All content is data-driven — no component changes required for copy updates:
-
-| What to update | File |
-|---|---|
-| Bio, tagline, skills, meta description | `src/data/profile.ts` |
-| Which GitHub projects appear | `src/data/featured-repos.ts` |
-| Project titles, descriptions, case studies | `src/data/project-meta.ts` |
-| Work history and education | `src/data/experience.ts` |
-| Project screenshots | `public/assets/` — keep each file under 200kb |
-| Resume PDF | Upload to Vercel Blob → set `NEXT_PUBLIC_RESUME_URL` in Vercel dashboard |
 
 ---
 
 ## Author
 
-**Gian Canevari** — [giancanevari.dev](https://giancanevari.dev) · [LinkedIn](https://www.linkedin.com/in/canevarigian/) · [GitHub](https://github.com/Gpiero19)
+**Gian Canevari** — [canevarigian.dev](https://canevarigian.dev) · [LinkedIn](https://www.linkedin.com/in/canevarigian/) · [GitHub](https://github.com/Gpiero19)

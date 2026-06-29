@@ -10,7 +10,7 @@ export const profile: Profile = {
   githubUsername: 'Gpiero19',
   linkedinUrl: 'https://www.linkedin.com/in/canevarigian/',
   resumePath: '/resume.pdf',
-  siteUrl: 'https://giancanevari.dev',
+  siteUrl: 'https://canevarigian.dev',
   metaDescription:
     'Gian Canevari — Full Stack Developer based in Copenhagen. Builds production web applications with TypeScript, React, Node.js, and PostgreSQL. Also works with Python, Django, and AI automation workflows. Open to remote and on-site roles.',
   techStack: [

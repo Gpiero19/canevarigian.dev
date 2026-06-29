@@ -29,12 +29,12 @@ export const projectMeta: Record<string, ProjectMeta> = {
     imageUrl: '/assets/music-player.png',
   },
   'personal-website': {
-    title: 'This Portfolio — giancanevari.dev',
+    title: 'This Portfolio — canevarigian.dev',
     summary:
       'Production portfolio built with Next.js 15 App Router and React Server Components — featuring ISR, GitHub API integration, CI/CD via GitHub Actions, and 14 automated tests.',
     longDescription:
       'I built this portfolio to the same standard I\'d apply to a client project — not as a static site, but as a production Next.js application.\n\nThe architecture uses React Server Components throughout: the GitHub API fetch runs server-side with a 1-hour ISR revalidation cycle, so the project list updates automatically without a redeploy. A static fallback fires if the API is unavailable, making the site resilient to GitHub outages. The resume is hosted on Vercel Blob (never committed to the repo) and served via an environment variable.\n\nThe design system is Tailwind CSS v4 with a custom @theme inline block and shadcn/ui zinc dark tokens. Geist Sans is loaded via the geist npm package as a Next.js font variable. Animations use CSS @keyframes registered as Tailwind tokens — no animation library added.\n\nThe test suite covers 14 unit tests (Vitest + Testing Library) and a Playwright E2E suite. GitHub Actions runs typecheck, lint, and the unit suite on every push. JSON-LD structured data, a generated /sitemap.xml, and Open Graph tags handle SEO.\n\nStack: Next.js 15 · React Server Components · TypeScript · Tailwind CSS v4 · shadcn/ui · Vitest · Playwright · GitHub Actions · Vercel',
-    liveUrl: 'https://giancanevari.dev',
+    liveUrl: 'https://canevarigian.dev',
     imageUrl: '/assets/portfolio.jpg',
   },
 };

@@ -1,0 +1,10 @@
+[    1203ms] EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self' 'unsafe-inline'".
+
+    at (app-pages-browser)/./node_modules/.pnpm/next@15.5.19_@babel+core@7.29.7_@playwright+test@1.55.1_react-dom@19.1.0_react@19.1.0__react@19.1.0/node_modules/next/dist/compiled/@next/react-refresh-utils/dist/runtime.js (http://localhost:3000/_next/static/chunks/main-app.js?v=1782472357741:1150:26)
+    at options.factory (http://localhost:3000/_next/static/chunks/webpack.js?v=1782472357741:704:31)
+    at __webpack_require__ (http://localhost:3000/_next/static/chunks/webpack.js?v=1782472357741:29:33)
+    at __webpack_exec__ (http://localhost:3000/_next/static/chunks/main-app.js?v=1782472357741:1889:48)
+    at http://localhost:3000/_next/static/chunks/main-app.js?v=1782472357741:1890:37
+    at webpackJsonpCallback (http://localhost:3000/_next/static/chunks/webpack.js?v=1782472357741:1380:39)
+    at http://localhost:3000/_next/static/chunks/main-app.js?v=1782472357741:9:61
+[    1209ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0

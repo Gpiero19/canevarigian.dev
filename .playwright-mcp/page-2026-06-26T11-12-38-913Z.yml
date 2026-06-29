@@ -1,0 +1,179 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Gian Canevari" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation "Main navigation" [ref=e5]:
+        - link "Projects" [ref=e6] [cursor=pointer]:
+          - /url: "#projects"
+        - link "About" [ref=e7] [cursor=pointer]:
+          - /url: "#about"
+        - link "Contact" [ref=e8] [cursor=pointer]:
+          - /url: "#contact"
+        - link "Resume" [ref=e9] [cursor=pointer]:
+          - /url: /resume.pdf
+  - main [ref=e10]:
+    - generic [ref=e12]:
+      - paragraph [ref=e13]: Full Stack Developer · Copenhagen
+      - heading "Gian Canevari" [level=1] [ref=e14]
+      - paragraph [ref=e15]: I build full-stack web applications end-to-end — from database schema to deployed UI. My work ships with tests, handles edge cases, and stays fast.
+      - generic [ref=e16]:
+        - link "View Projects" [ref=e17] [cursor=pointer]:
+          - /url: "#projects"
+        - link "LinkedIn" [ref=e18] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/canevarigian/
+        - link "Resume" [ref=e19] [cursor=pointer]:
+          - /url: /resume.pdf
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - heading "Projects" [level=2] [ref=e23]
+        - paragraph [ref=e24]: Production-deployed. Click any project to see the case study.
+      - generic [ref=e25]:
+        - article [ref=e26]:
+          - img "ShowFreak — Streaming Tracker screenshot" [ref=e28] [cursor=pointer]
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - paragraph [ref=e31]: TypeScript
+              - heading "ShowFreak — Streaming Tracker" [level=3] [ref=e33]
+            - paragraph [ref=e34]: Full-stack streaming tracker with a custom genre-weighted recommendation engine, JWT refresh token rotation, and 106 automated tests — deployed on Vercel + Render + Neon.
+            - group [ref=e35]:
+              - generic "Case study" [ref=e36] [cursor=pointer]:
+                - img [ref=e37]
+                - text: Case study
+            - generic [ref=e39]:
+              - link "Live Demo" [ref=e40] [cursor=pointer]:
+                - /url: https://show-freak-src.vercel.app
+                - img [ref=e41]
+                - text: Live Demo
+              - link "GitHub" [ref=e45] [cursor=pointer]:
+                - /url: https://github.com/Gpiero19/ShowFreak
+                - img [ref=e46]
+                - text: GitHub
+        - article [ref=e49]:
+          - img "Frello — Kanban Board screenshot" [ref=e51] [cursor=pointer]
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - paragraph [ref=e54]: JavaScript
+              - heading "Frello — Kanban Board" [level=3] [ref=e56]
+            - paragraph [ref=e57]: Full-stack Trello clone with a 15-route REST API, multi-level drag-and-drop, and a guest-to-account migration that preserves all board state — deployed on Vercel + Render.
+            - group [ref=e58]:
+              - generic "Case study" [ref=e59] [cursor=pointer]:
+                - img [ref=e60]
+                - text: Case study
+            - generic [ref=e62]:
+              - link "Live Demo" [ref=e63] [cursor=pointer]:
+                - /url: https://trello-project-sandy.vercel.app/
+                - img [ref=e64]
+                - text: Live Demo
+              - link "GitHub" [ref=e68] [cursor=pointer]:
+                - /url: https://github.com/Gpiero19/Trello-project
+                - img [ref=e69]
+                - text: GitHub
+        - article [ref=e72]:
+          - img "DrumPad & Metronome screenshot" [ref=e74] [cursor=pointer]
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - paragraph [ref=e77]: TypeScript
+              - heading "DrumPad & Metronome" [level=3] [ref=e79]
+            - paragraph [ref=e80]: Browser-based drum sequencer with a look-ahead beat scheduler and per-key audio pools to eliminate playback artifacts under rapid input — React 19 + TypeScript + Web Audio API.
+            - group [ref=e81]:
+              - generic "Case study" [ref=e82] [cursor=pointer]:
+                - img [ref=e83]
+                - text: Case study
+            - generic [ref=e85]:
+              - link "Live Demo" [ref=e86] [cursor=pointer]:
+                - /url: https://gpiero19.github.io/Music-player/
+                - img [ref=e87]
+                - text: Live Demo
+              - link "GitHub" [ref=e91] [cursor=pointer]:
+                - /url: https://github.com/Gpiero19/Music-player
+                - img [ref=e92]
+                - text: GitHub
+    - generic [ref=e96]:
+      - heading "About" [level=2] [ref=e97]
+      - generic [ref=e98]:
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: I'm an industrial engineer from Chile who transitioned into software development through a Python developer bootcamp in Berlin. Since then I've built three production-deployed full-stack applications covering REST APIs, relational databases, and React frontends — and I design AI-assisted automation workflows using Make.com and AI coding agents as part of my daily engineering practice.
+          - paragraph [ref=e101]: Across my projects I've shipped JWT refresh token rotation, a genre-weighted recommendation engine, multi-level drag-and-drop with a 15-route REST API, and a Web Audio API look-ahead scheduler — backed by 106 automated tests in ShowFreak. My engineering background gives me a structured approach to problem decomposition before I write a line of code.
+          - paragraph [ref=e102]: I work in TypeScript across the full stack (React · Node.js · Express · PostgreSQL) and also in Python with Django REST Framework. I speak English (C1), Spanish (native), Italian, and conversational Danish. Open to full-stack and frontend roles — remote or on-site in Copenhagen.
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - paragraph [ref=e105]: Frontend
+            - generic [ref=e106]:
+              - generic [ref=e107]: TypeScript
+              - generic [ref=e108]: React
+              - generic [ref=e109]: Next.js
+              - generic [ref=e110]: React Router
+              - generic [ref=e111]: TanStack Query
+              - generic [ref=e112]: Tailwind CSS
+              - generic [ref=e113]: HTML
+              - generic [ref=e114]: CSS
+          - generic [ref=e115]:
+            - paragraph [ref=e116]: Backend
+            - generic [ref=e117]:
+              - generic [ref=e118]: Node.js
+              - generic [ref=e119]: Express
+              - generic [ref=e120]: Python
+              - generic [ref=e121]: Django REST
+              - generic [ref=e122]: REST APIs
+              - generic [ref=e123]: JWT Auth
+              - generic [ref=e124]: Prisma
+              - generic [ref=e125]: Sequelize
+          - generic [ref=e126]:
+            - paragraph [ref=e127]: Database
+            - generic [ref=e128]:
+              - generic [ref=e129]: PostgreSQL
+              - generic [ref=e130]: MySQL
+              - generic [ref=e131]: SQL
+          - generic [ref=e132]:
+            - paragraph [ref=e133]: AI & Automation
+            - generic [ref=e134]:
+              - generic [ref=e135]: Make.com
+              - generic [ref=e136]: Claude Code
+              - generic [ref=e137]: Prompt Engineering
+              - generic [ref=e138]: AI Workflows
+          - generic [ref=e139]:
+            - paragraph [ref=e140]: Testing
+            - generic [ref=e141]:
+              - generic [ref=e142]: Vitest
+              - generic [ref=e143]: Testing Library
+              - generic [ref=e144]: Integration Testing
+          - generic [ref=e145]:
+            - paragraph [ref=e146]: Tools
+            - generic [ref=e147]:
+              - generic [ref=e148]: Git
+              - generic [ref=e149]: GitHub
+              - generic [ref=e150]: Docker
+              - generic [ref=e151]: CI/CD
+              - generic [ref=e152]: Vercel
+              - generic [ref=e153]: Render
+              - generic [ref=e154]: Azure / AWS
+    - generic [ref=e156]:
+      - heading "Get in touch" [level=2] [ref=e157]
+      - paragraph [ref=e158]: I'm open to full-stack and frontend roles — remote or on-site. If my work looks like a fit for your team, reach out on LinkedIn or by email.
+      - generic [ref=e159]:
+        - link "LinkedIn" [ref=e160] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/canevarigian/
+          - img [ref=e161]
+          - text: LinkedIn
+        - link "Email" [ref=e165] [cursor=pointer]:
+          - /url: mailto:canevarigian@gmail.com
+          - img [ref=e166]
+          - text: Email
+        - link "GitHub" [ref=e169] [cursor=pointer]:
+          - /url: https://github.com/Gpiero19
+          - img [ref=e170]
+          - text: GitHub
+  - contentinfo [ref=e173]:
+    - generic [ref=e174]:
+      - paragraph [ref=e175]: © 2026 Gian Canevari
+      - generic [ref=e176]:
+        - link "GitHub" [ref=e177] [cursor=pointer]:
+          - /url: https://github.com/Gpiero19
+          - img [ref=e178]
+        - link "LinkedIn" [ref=e181] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/canevarigian/
+          - img [ref=e182]
+        - link "Email" [ref=e186] [cursor=pointer]:
+          - /url: mailto:canevarigian@gmail.com
+          - img [ref=e187]
