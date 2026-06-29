@@ -28,7 +28,7 @@ export const projectMeta: Record<string, ProjectMeta> = {
     liveUrl: 'https://drumpad.canevarigian.dev',
     imageUrl: '/assets/music-player.png',
   },
-  'personal-website': {
+  'canevarigian.dev': {
     title: 'This Portfolio — canevarigian.dev',
     summary:
       'Production portfolio built with Next.js 15 App Router and React Server Components — featuring ISR, GitHub API integration, CI/CD via GitHub Actions, and 14 automated tests.',
