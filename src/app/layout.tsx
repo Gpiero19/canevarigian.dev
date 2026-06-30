@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
+import { JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { profile } from '@/data/profile';
@@ -47,7 +54,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${GeistSans.variable}`}>
+    <html lang="en" className={`dark ${GeistSans.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <script
           type="application/ld+json"

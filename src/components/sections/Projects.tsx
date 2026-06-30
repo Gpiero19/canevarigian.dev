@@ -11,8 +11,12 @@ export default async function Projects() {
     <section id="projects" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16">
-          <h2 className="mb-2 text-3xl font-bold tracking-tight">Projects</h2>
-          <p className="text-sm text-muted-foreground">Production-deployed. Click any project to see the case study.</p>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="font-mono text-xs font-medium text-[rgb(118_200_84)] tracking-widest">01.</span>
+            <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
+            <div className="flex-1 h-px bg-[rgb(51_46_103)]"></div>
+          </div>
+          <p className="text-sm text-[rgb(158_156_168)]">Production-deployed. Click any project to see the case study.</p>
         </div>
         {repos.length === 0 ? (
           <p className="text-muted-foreground">No projects to display.</p>

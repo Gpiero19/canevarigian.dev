@@ -5,4 +5,5 @@ export interface ProjectMeta {
   liveUrl?: string;
   imageUrl?: string;
   longDescription?: string;
+  techStack?: string[];
 }
