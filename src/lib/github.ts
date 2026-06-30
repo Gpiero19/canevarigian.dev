@@ -35,7 +35,7 @@ export async function fetchFeaturedRepos(
       url: r.html_url,
     }));
   } catch (err) {
-    console.error(
+    console.warn(
       JSON.stringify({
         timestamp: new Date().toISOString(),
         level: 'error',
