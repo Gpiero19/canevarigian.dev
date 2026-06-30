@@ -51,6 +51,7 @@ export default function Header() {
         <div className={`w-full h-full flex items-center justify-between ${scrolled ? 'px-5' : 'px-6'}`}>
           <Link
             href="/"
+            aria-label="Gian Canevari"
             className={`font-mono font-medium tracking-widest text-foreground no-underline transition-all duration-500 ${scrolled ? 'text-xs' : 'text-sm'}`}
           >
             GC
@@ -58,7 +59,7 @@ export default function Header() {
           </Link>
 
           {!isMobile && (
-            <nav className={`flex items-center ${scrolled ? 'gap-3' : 'gap-6'}`}>
+            <nav aria-label="Main navigation" className={`flex items-center ${scrolled ? 'gap-3' : 'gap-6'}`}>
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -96,7 +97,7 @@ export default function Header() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="flex flex-col justify-center items-center gap-1.5 p-2 bg-transparent border-none cursor-pointer rounded-lg"
-              aria-label="Toggle menu"
+              aria-label="Open navigation menu"
             >
               <span className={`block w-5 h-0.5 rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ backgroundColor: 'rgb(200, 190, 230)' }} />
               <span className={`block w-5 h-0.5 rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} style={{ backgroundColor: 'rgb(200, 190, 230)' }} />

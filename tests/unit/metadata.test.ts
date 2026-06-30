@@ -3,6 +3,9 @@ import { describe, it, expect, vi } from 'vitest';
 vi.mock('geist/font/sans', () => ({
   GeistSans: { variable: '--font-geist-sans', className: 'geist-sans' },
 }));
+vi.mock('next/font/google', () => ({
+  JetBrains_Mono: () => ({ variable: '--font-jetbrains-mono', className: 'jetbrains-mono' }),
+}));
 vi.mock('@vercel/analytics/react', () => ({ Analytics: () => null }));
 
 import { metadata } from '@/app/layout';

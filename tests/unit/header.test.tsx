@@ -26,6 +26,8 @@ describe('Header', () => {
   });
 
   it('renders the mobile toggle button', () => {
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 375 });
+    window.dispatchEvent(new Event('resize'));
     render(<Header />);
     expect(screen.getByRole('button', { name: 'Open navigation menu' })).toBeInTheDocument();
   });
