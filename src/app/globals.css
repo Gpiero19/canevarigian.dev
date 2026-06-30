@@ -16,11 +16,68 @@
   50%, 100% { opacity: 0; }
 }
 
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
+  }
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
 
   --animate-fade-up: fade-up 0.6s ease both;
+
+  /* === Project palette === */
+  /* Text */
+  --color-text-primary: rgb(225 220 255);
+  --color-text-secondary: rgb(128 115 180);
+  --color-text-tertiary: rgb(135 125 160);
+  --color-text-dim: rgb(80 70 110);
+  --color-text-muted: rgb(158 156 168);
+  --color-text-subtle: rgb(98 96 108);
+  --color-text-bright: rgb(230 228 234);
+  --color-text-hover: rgb(210 208 218);
+  /* Accents */
+  --color-accent-green: rgb(118 200 84);
+  --color-accent-green-hover: rgb(140 220 100);
+  --color-accent-linkedin: rgb(0 119 181);
+  /* Surfaces */
+  --color-surface: rgba(22 18 37 / 0.6);
+  --color-surface-dark: rgba(22 18 37 / 0.8);
+  --color-surface-darkest: rgba(22 18 37 / 0.9);
+  --color-surface-hover: rgba(36 34 50 / 0.6);
+  --color-surface-green: rgba(76 175 80 / 0.1);
+  --color-surface-green-faint: rgba(76 175 80 / 0.05);
+  --color-surface-linkedin: rgba(0 119 181 / 0.12);
+  /* Navbar */
+  --color-navbar: rgba(18 16 31 / 0.88);
+  --color-navbar-bubble: rgba(22 18 37 / 0.95);
+  /* Strokes */
+  --color-stroke: rgb(51 46 103);
+  --color-stroke-light: rgb(61 57 97);
+  --color-stroke-hover: rgb(80 75 100);
+  --color-stroke-nav: rgb(36 31 56);
+  --color-stroke-nav-bubble: rgb(61 57 97);
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -45,31 +102,6 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-}
-
-@layer base {
-  :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.5rem;
-  }
 }
 
 @layer base {

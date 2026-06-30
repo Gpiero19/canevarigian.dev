@@ -127,7 +127,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-3xl font-bold no-underline transition-colors hover:text-[rgb(118,200,84)]"
+              className="text-3xl font-bold no-underline transition-colors hover:text-accent-green"
               style={{ color: 'rgb(225, 220, 255)' }}
             >
               {link.label}
@@ -138,7 +138,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="text-3xl font-bold no-underline transition-colors hover:text-[rgb(118,200,84)]"
+            className="text-3xl font-bold no-underline transition-colors hover:text-accent-green"
             style={{ color: 'rgb(225, 220, 255)' }}
           >
             Resume ↗
