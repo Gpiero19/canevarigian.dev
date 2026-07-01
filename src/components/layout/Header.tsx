@@ -14,6 +14,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,33 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const updateActiveSection = () => {
+      const center = window.innerHeight / 2;
+      const current = sections.find((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= center && rect.bottom >= center;
+      });
+      setActiveSection(current ? current.id : '');
+    };
+
+    const observer = new IntersectionObserver(updateActiveSection, {
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0,
+    });
+
+    sections.forEach((section) => observer.observe(section));
+    updateActiveSection();
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <header
@@ -50,6 +78,10 @@ export default function Header() {
           <Link
             href="/"
             aria-label="Gian Canevari"
+            onClick={() => {
+              setActiveSection('');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className={`font-mono font-medium tracking-widest text-foreground no-underline transition-all duration-500 ${scrolled ? 'text-xs' : 'text-sm'}`}
           >
             GC
@@ -62,7 +94,11 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-medium no-underline transition-colors duration-150 text-text-muted hover:text-text-hover whitespace-nowrap ${scrolled ? 'text-xs' : 'text-sm'}`}
+                  className={`no-underline transition-colors duration-150 whitespace-nowrap ${scrolled ? 'text-xs' : 'text-sm'} ${
+                    activeSection === link.href.slice(1)
+                      ? 'font-semibold text-foreground'
+                      : 'font-medium text-text-muted hover:text-text-hover'
+                  }`}
                 >
                   {link.label}
                 </a>
