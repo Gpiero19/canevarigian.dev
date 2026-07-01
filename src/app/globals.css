@@ -47,37 +47,37 @@
 
   --animate-fade-up: fade-up 0.6s ease both;
 
-  /* === Project palette === */
+  /* === Project palette (neutral-gray OKLCH, matched to the Claude Design mockup) === */
   /* Text */
   --color-text-primary: rgb(225 220 255);
-  --color-text-secondary: rgb(128 115 180);
-  --color-text-tertiary: rgb(135 125 160);
+  --color-text-secondary: oklch(56% 0.01 240);
+  --color-text-tertiary: oklch(53% 0.01 240);
   --color-text-dim: rgb(80 70 110);
-  --color-text-muted: rgb(158 156 168);
-  --color-text-subtle: rgb(98 96 108);
-  --color-text-bright: rgb(230 228 234);
-  --color-text-hover: rgb(210 208 218);
+  --color-text-muted: oklch(50% 0.01 240);
+  --color-text-subtle: oklch(30% 0.01 255);
+  --color-text-bright: oklch(84% 0.007 240);
+  --color-text-hover: oklch(90% 0.005 240);
   /* Accents */
   --color-accent-green: rgb(118 200 84);
   --color-accent-green-hover: rgb(140 220 100);
   --color-accent-linkedin: rgb(0 119 181);
   /* Surfaces */
-  --color-surface: rgba(22 18 37 / 0.6);
-  --color-surface-dark: rgba(22 18 37 / 0.8);
-  --color-surface-darkest: rgba(22 18 37 / 0.9);
-  --color-surface-hover: rgba(36 34 50 / 0.6);
+  --color-surface: oklch(9.5% 0.01 255);
+  --color-surface-dark: oklch(9% 0.01 255);
+  --color-surface-darkest: oklch(9% 0.01 255 / 0.85);
+  --color-surface-hover: oklch(16% 0.01 255 / 0.6);
   --color-surface-green: rgba(76 175 80 / 0.1);
   --color-surface-green-faint: rgba(76 175 80 / 0.05);
   --color-surface-linkedin: rgba(0 119 181 / 0.12);
   /* Navbar */
-  --color-navbar: rgba(18 16 31 / 0.88);
-  --color-navbar-bubble: rgba(22 18 37 / 0.95);
+  --color-navbar: oklch(7% 0.012 255 / 0.88);
+  --color-navbar-bubble: oklch(8.5% 0.012 255 / 0.95);
   /* Strokes */
-  --color-stroke: rgb(51 46 103);
+  --color-stroke: oklch(22% 0.01 255);
   --color-stroke-light: rgb(61 57 97);
-  --color-stroke-hover: rgb(80 75 100);
-  --color-stroke-nav: rgb(36 31 56);
-  --color-stroke-nav-bubble: rgb(61 57 97);
+  --color-stroke-hover: oklch(34% 0.01 255);
+  --color-stroke-nav: oklch(14% 0.01 255);
+  --color-stroke-nav-bubble: oklch(24% 0.01 255);
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -127,10 +127,10 @@
     inset: 0;
     z-index: 0;
     background: linear-gradient(135deg,
-      rgb(25 18 50 / 0.85) 0%,
-      rgb(18 12 40 / 0.7) 30%,
-      rgb(15 20 45 / 0.5) 60%,
-      rgb(10 30 30 / 0.6) 100%);
+      oklch(15% 0.08 278 / 0.5) 0%,
+      oklch(12% 0.06 255 / 0.3) 30%,
+      oklch(10% 0.05 200 / 0.2) 60%,
+      oklch(8% 0.04 145 / 0.4) 100%);
     pointer-events: none;
   }
 
@@ -142,7 +142,7 @@
     left: -150px;
     width: 700px;
     height: 700px;
-    background: radial-gradient(circle, rgb(89 73 255 / 0.25) 0%, transparent 65%);
+    background: radial-gradient(circle, oklch(35% 0.15 278 / 0.25) 0%, transparent 65%);
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
@@ -162,7 +162,7 @@
     right: -100px;
     width: 840px;
     height: 840px;
-    background: radial-gradient(circle, rgb(76 175 80 / 0.18) 0%, transparent 65%);
+    background: radial-gradient(circle, oklch(30% 0.12 145 / 0.18) 0%, transparent 65%);
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
@@ -178,7 +178,7 @@
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgb(52 146 235 / 0.12) 0%, transparent 65%);
+    background: radial-gradient(circle, oklch(28% 0.1 200 / 0.12) 0%, transparent 65%);
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
